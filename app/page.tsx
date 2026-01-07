@@ -1,241 +1,190 @@
 'use client';
 
-import {
-  Lightbulb,
-  UserCog,
-  Network,
-  FileText,
-  Shield,
-  Rocket,
-  Database,
-  RefreshCw,
-  Search,
-  Route,
-  ChessKing,
-  X,
-  AlertCircle,
-} from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
+import { useRef } from 'react';
 
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-import Hero from '@/components/sections/Hero';
-import SectionHeader from '@/components/sections/SectionHeader';
-import CTASection from '@/components/sections/CTASection';
-import EcosystemSection from '@/components/sections/EcosystemSection';
-import ServiceCard from '@/components/ui/ServiceCard';
-import AssessmentCard from '@/components/ui/AssessmentCard';
-import ProblemCard from '@/components/ui/ProblemCard';
+import {
+  CurveSwipeHero,
+  SectionHeader,
+  CTASection,
+  SocialProofSection,
+  TestimonialsSection,
+  BentoGallerySection,
+  FAQSection,
+  MethodologySection,
+  FoundationalMethodologiesDashboard,
+} from '@/components/sections';
+import Reveal from '@/components/motion/Reveal';
+import Link from 'next/link';
+import DynamicMorphOverlay from '@/components/motion/DynamicMorphOverlay';
 
 const heroData = {
   title: 'Creating Engineering Disruption with AI-First Digital Transformation',
   description:
-    'You are a leader in a complex organization, navigating the challenges of digital transformation and AI adoption. You need a partner who understands your unique context, can provide strategic guidance, and deliver tangible results.',
+    'We diagnose bottlenecks, design the right AI, and scale execution from quick wins to enterprise rollouts combining strategy and hands-on engineering to deliver measurable outcomes.',
   stats: [
-    { value: '$1M+', label: 'Increased Revenue' },
-    { value: '80%', label: 'Efficiency Gains' },
-    { value: '3x', label: 'Faster Time to Market' },
+    { value: '25%', label: 'Decrease in person hours' },
+    { value: '20%', label: 'Faster time to launch' },
+    { value: 'Step-Change', label: 'ROI Unlocked' },
   ],
 };
 
-const services = [
-  {
-    number: '01',
-    icon: Lightbulb,
-    title: 'Vision and Strategy',
-    description:
-      'Define your AI vision, identify opportunities, and create a roadmap aligned with business goals.',
-  },
-  {
-    number: '02',
-    icon: UserCog,
-    title: 'Capability Readiness',
-    description:
-      'Assess current capabilities, identify skill gaps, and build internal teams with AI expertise.',
-  },
-  {
-    number: '03',
-    icon: Network,
-    title: 'Architecture and Systems',
-    description:
-      'Design scalable AI architecture, data infrastructure, and integration with existing systems.',
-  },
-  {
-    number: '04',
-    icon: FileText,
-    title: 'Use Case Portfolio',
-    description:
-      'Identify high-impact AI use cases, prioritize initiatives, and develop solutions that drive value.',
-  },
-  {
-    number: '05',
-    icon: Shield,
-    title: 'Governance and Execution',
-    description:
-      'Establish governance frameworks, ethical guidelines, and risk management practices.',
-  },
-  {
-    number: '06',
-    icon: Rocket,
-    title: 'Scalable Execution',
-    description:
-      'Implement agile development, MLOps practices, and continuous deployment pipelines.',
-  },
-  {
-    number: '07',
-    icon: Database,
-    title: 'Data and Intelligence Activation',
-    description:
-      'Enable data collection, processing, quality assurance, and insights generation.',
-  },
-  {
-    number: '08',
-    icon: RefreshCw,
-    title: 'Feedback and Adaptation Loops',
-    description:
-      'Monitor performance, iterate on solutions, and drive continuous improvement.',
-  },
-];
-
-const assessmentSteps = [
-  {
-    number: '1',
-    icon: Search,
-    title: 'Discovery',
-    description:
-      'Understand your business goals, current tech stack, and data landscape through comprehensive analysis.',
-  },
-  {
-    number: '2',
-    icon: Route,
-    title: 'Roadmap',
-    description:
-      'Develop a customized AI roadmap, outlining initiatives, timelines, and resource requirements.',
-  },
-  {
-    number: '3',
-    icon: ChessKing,
-    title: 'Strategy',
-    description:
-      'Define the overall AI strategy, governance framework, and success metrics for your organization.',
-  },
-];
-
-const problems = [
-  {
-    icon: X,
-    title: 'Strategy Without Execution',
-    description:
-      'Providing high-level strategies without practical implementation plans or hands-on support.',
-  },
-  {
-    icon: AlertCircle,
-    title: 'Generic Solutions',
-    description:
-      "Offering one-size-fits-all solutions that don't address your unique business challenges.",
-  },
-  {
-    icon: X,
-    title: 'No Ownership',
-    description:
-      'Lacking accountability for results and failing to integrate with client teams effectively.',
-  },
-];
-
 export default function Home() {
+  const choiceRef = useRef<HTMLElement | null>(null);
+
   return (
-    <main className="min-h-screen bg-[#020617] text-white antialiased">
+    <main className="min-h-screen text-white antialiased">
       <Header />
 
-      <Hero
+      <CurveSwipeHero
         title={heroData.title}
         description={heroData.description}
         stats={heroData.stats}
       />
 
-      {/* Systematic Approach Section */}
-      <section className="relative py-24 bg-[#020617]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeader
-            title="Systematic Approach to"
-            titleGradient="AI Transformation"
-            description="Our comprehensive framework ensures a holistic and sustainable AI transformation, addressing all critical aspects from strategy to execution and continuous improvement."
-          />
+      <Reveal>
+        <div className="py-12">
+          <SocialProofSection />
+        </div>
+      </Reveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {services.map((service) => (
-              <ServiceCard
-                key={service.number}
-                number={service.number}
-                icon={service.icon}
-                title={service.title}
-                description={service.description}
-              />
-            ))}
+      {/* Foundational Methodologies */}
+      <MethodologySection />
+
+      {/* Foundational Methodologies (dashboard view) */}
+      <FoundationalMethodologiesDashboard />
+
+      {/* Choice / Positioning */}
+      <section
+        ref={choiceRef}
+        className="relative py-16 md:py-32 overflow-hidden"
+      >
+        <DynamicMorphOverlay
+          targetRef={choiceRef}
+          gradient1={['#a855f7', '#0ea5e9']}
+          gradient2={['#22c55e', '#a855f7']}
+          opacity1={0.35}
+          opacity2={0.45}
+        />
+
+        <div className="max-w-4xl mx-auto px-3 sm:px-6 lg:px-8 text-center">
+          <Reveal y={20}>
+            <h2 className="font-display text-2xl xs:text-3xl md:text-6xl mb-6 sm:mb-8 leading-tight sm:leading-[1.1]">
+              You have a choice. <span className="text-gradient">Disrupt yourself.</span> Or be disrupted.
+            </h2>
+            <p className="text-base sm:text-lg md:text-xl text-white/70 leading-relaxed mb-8 sm:mb-12">
+              The cost of intelligence is falling to zero. Those who wait for "perfect" will be outpaced by those who build for "flow." Astrenox is here to ensure you end up on the right side of history.
+            </p>
+            <Link href="/contact" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-[12px] sm:rounded-[14px] border border-white/20 bg-white/5 px-5 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-bold hover:bg-white/10 transition-colors">
+              Get started
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Testimonials / Results */}
+      <section className="relative py-16 md:py-32 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+          <div className="mb-10 sm:mb-16">
+          <SectionHeader
+              badge="Success Stories"
+              title="Real stories,"
+              titleGradient="real results"
+              description="See how Astrenox is helping leaders transform their engineering and operations with AI-first thinking."
+            />
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8">
+            <Reveal y={20}>
+              <div className="surface p-5 sm:p-8 border border-emerald-500/20 bg-emerald-500/5">
+                <div className="text-3xl sm:text-4xl font-display text-emerald-400 mb-2">25%</div>
+                <div className="text-[10px] sm:text-xs font-semibold tracking-wider uppercase text-emerald-400/60 mb-4 sm:mb-6">Decrease in per-project person hours</div>
+                <p className="text-xs sm:text-sm text-white/80 italic">"The speed of delivery shifted almost overnight. We aren't just shipping more. We're shipping better."</p>
+              </div>
+            </Reveal>
+            <Reveal y={20} delayMs={100}>
+              <div className="surface p-5 sm:p-8 border border-cyan-500/20 bg-cyan-500/5">
+                <div className="text-3xl sm:text-4xl font-display text-cyan-400 mb-2">20%</div>
+                <div className="text-[10px] sm:text-xs font-semibold tracking-wider uppercase text-cyan-400/60 mb-4 sm:mb-6">Decrease in time to launch</div>
+                <p className="text-xs sm:text-sm text-white/80 italic">"Astrenox didn't just give us a roadmap. They sat in the code with us until the vision was live."</p>
+              </div>
+            </Reveal>
+          </div>
+
+          <div className="mt-12 sm:mt-16 overflow-hidden">
+            <div className="whitespace-nowrap flex gap-8 sm:gap-12 animate-[marquee_30s_linear_infinite] text-lg sm:text-2xl font-display text-white/20">
+              {Array.from({ length: 10 }).map((_, i) => (
+                <span key={i}>Built by builders, trusted by leaders • </span>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Assessment Process Section */}
-      <section className="relative py-24 bg-black/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeader
-            title="Assessment Process"
-            description="Our structured assessment process helps us understand your current state, identify opportunities, and tailor our approach to your specific needs."
-          />
+       
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {assessmentSteps.map((step) => (
-              <AssessmentCard
-                key={step.number}
-                number={step.number}
-                icon={step.icon}
-                title={step.title}
-                description={step.description}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
+      <div className="py-12 text-center">
+        <Link href="/contact" className="text-purple-400 hover:text-purple-300 font-semibold flex items-center justify-center gap-2">
+          Talk to our AI experts
+          <ArrowRight className="h-4 w-4" />
+        </Link>
+      </div>
+      
+      {/* Final CTA */}
+      <section className="relative py-16 md:py-32 overflow-hidden border-t border-white/5">
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-purple-500/8 via-transparent to-cyan-500/8" />
+        <div className="pointer-events-none absolute -left-24 top-10 h-72 w-72 rounded-full bg-purple-500/10 blur-[120px]" />
+        <div className="pointer-events-none absolute -right-24 bottom-0 h-72 w-72 rounded-full bg-cyan-500/10 blur-[120px]" />
 
-      {/* CTA Section */}
-      <CTASection
-        title="Ready to Transform Your Business?"
-        description="Let's discuss how AI-First Digital Transformation can unlock new possibilities for your organization."
-        buttonText="Schedule your free assessment"
-      />
-
-      {/* Why Traditional Consultancies Fall Short */}
-      <section className="relative py-24 bg-black/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeader
-            title="Why Traditional Consultancies"
-            titleGradient="Fall Short"
-            description="Many traditional consultancies offer generic advice without deep technical expertise or a commitment to execution, leading to stalled initiatives and wasted investments."
-          />
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-8">
-            {problems.map((problem, index) => (
-              <ProblemCard
-                key={index}
-                icon={problem.icon}
-                title={problem.title}
-                description={problem.description}
-              />
-            ))}
-          </div>
-
-          <div className="max-w-2xl mx-auto text-center border border-white/10 bg-purple-500/10 rounded-lg p-6">
-            <p className="text-white/90">
-              We bridge the gap between strategy and execution, ensuring
-              tangible outcomes and sustainable growth.
+        <div className="relative z-10 max-w-6xl mx-auto px-3 sm:px-4">
+          <div className="text-center">
+            <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-[9px] sm:text-[11px] font-semibold tracking-[0.2em] sm:tracking-[0.26em] uppercase text-white/60">
+              Future-Proof
+            </div>
+            <h2 className="mt-4 text-2xl xs:text-3xl md:text-6xl font-display leading-tight">
+              Stay on the right side of history.
+            </h2>
+            <p className="mt-4 text-sm sm:text-base md:text-lg text-white/65 max-w-3xl mx-auto">
+              Ready to build what&apos;s next? Tell us where you are constrained and we&apos;ll design AI-first solutions that ship and scale.
             </p>
           </div>
+
+          <div className="mt-8 sm:mt-10 flex flex-col xs:flex-row items-center justify-center gap-3 sm:gap-4">
+            <Link
+              href="/contact"
+              className="btn-primary w-full xs:w-auto px-5 sm:px-8 py-3.5 sm:py-4 text-sm sm:text-base"
+            >
+              Get Started
+              <ArrowRight className="h-4.5 w-4.5 sm:h-5 sm:w-5 btn-icon" />
+            </Link>
+            <Link
+              href="/contact"
+              className="btn-secondary w-full xs:w-auto px-5 sm:px-8 py-3.5 sm:py-4 text-sm sm:text-base"
+            >
+              Talk to us
+            </Link>
+          </div>
+
+          <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 text-center">
+            {[
+              { label: 'Delivery Velocity', value: 'Weeks to launch' },
+              { label: 'Ownership Model', value: 'We ship with you' },
+              { label: 'Proof over slides', value: 'Production or it didn’t happen' },
+            ].map((item) => (
+              <div key={item.label} className="surface p-4 border border-white/10">
+                <p className="text-[10px] sm:text-xs font-semibold tracking-[0.15em] sm:tracking-[0.22em] uppercase text-white/45">{item.label}</p>
+                <p className="mt-1.5 text-xs sm:text-sm text-white/70">{item.value}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
-
-      {/* Ecosystem Section */}
-      <EcosystemSection />
-
+      <Reveal>
+      <FAQSection />
+      </Reveal>
       <Footer />
     </main>
   );

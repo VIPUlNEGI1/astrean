@@ -53,48 +53,51 @@ const partners = [
 
 export default function EcosystemSection() {
   return (
-    <section className="relative py-24 bg-[#020617]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-16">
+    <section className="relative py-16 md:py-24 overflow-hidden">
+      <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.18]" />
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-12 items-start mb-12 sm:mb-16">
           <div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-2 text-white">
+            <p className="text-[10px] sm:text-xs font-semibold tracking-[0.25em] sm:tracking-[0.32em] uppercase text-white/60">
+              Ecosystem
+            </p>
+            <h2 className="mt-4 text-2xl xs:text-3xl md:text-5xl font-semibold tracking-tight text-white leading-tight">
               We Orchestrate the Ecosystem
             </h2>
-            <p className="text-purple-400 text-xl mb-6 font-semibold">
-              Not Just Use It
-            </p>
-            <p className="text-white/70 text-lg mb-8">
+            <p className="mt-4 text-sm sm:text-base md:text-lg text-white/70 leading-relaxed mb-8 max-w-xl">
               Our deep partnerships with leading AI providers, community and
               research organizations, and open-source initiatives allow us to
               build bespoke solutions that leverage the best of the AI landscape.
             </p>
 
-            <div className="space-y-6 mb-8">
+            <div className="space-y-5 sm:space-y-6 mb-8">
               {ecosystemFeatures.map((feature, index) => {
                 const Icon = feature.icon;
                 return (
-                  <div key={index} className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-lg bg-purple-500/20 flex items-center justify-center flex-shrink-0">
-                      <Icon className="w-6 h-6 text-purple-400" />
+                  <div key={index} className="flex items-start gap-3.5 sm:gap-4">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-[12px] sm:rounded-[16px] border border-white/10 bg-white/5 flex items-center justify-center flex-shrink-0">
+                      <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-white/80" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold mb-2 text-white">
+                      <h3 className="text-sm sm:text-base md:text-lg font-semibold tracking-tight mb-0.5 text-white">
                         {feature.title}
                       </h3>
-                      <p className="text-white/60">{feature.description}</p>
+                      <p className="text-white/65 text-xs sm:text-sm leading-relaxed">
+                        {feature.description}
+                      </p>
                     </div>
                   </div>
                 );
               })}
             </div>
 
-            <button className="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-lg transition-colors duration-200 shadow-lg shadow-purple-500/50">
+            <button className="w-full sm:w-auto inline-flex items-center justify-center rounded-[12px] sm:rounded-[14px] bg-white text-slate-950 px-4 sm:px-5 py-2.5 sm:py-3 text-xs sm:text-sm font-semibold shadow-lg shadow-black/30 transition hover:bg-white/90">
               Explore our partnerships
             </button>
           </div>
 
-          <div>
-            <div className="grid grid-cols-2 gap-6">
+          <div className="mt-8 lg:mt-0">
+            <div className="grid grid-cols-1 xs:grid-cols-2 gap-4 sm:gap-6">
               {partners.map((partner, index) => (
                 <PartnerCard
                   key={index}

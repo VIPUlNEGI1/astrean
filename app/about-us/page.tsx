@@ -13,136 +13,99 @@ import {
   Shield,
   Users,
   Award,
+  Linkedin,
+  Twitter,
+  Github,
+  ArrowRight,
+  Briefcase,
+  MapPin,
 } from 'lucide-react';
 
+import { useRef } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import Hero from '@/components/sections/Hero';
 import SectionHeader from '@/components/sections/SectionHeader';
 import CTASection from '@/components/sections/CTASection';
 import ServiceCard from '@/components/ui/ServiceCard';
+import Reveal from '@/components/motion/Reveal';
+import Link from 'next/link';
+import SocialProofSection from '@/components/sections/SocialProofSection';
+import DynamicMorphOverlay from '@/components/motion/DynamicMorphOverlay';
 
 const heroData = {
-  title: 'About Astrenox',
+  title: 'Our mission is to help your business reach its potential & end up on the right side of history, post-AI.',
   description:
-    'Building the future through AI innovation and digital transformation.',
+    'Astrenox was founded on the belief that the AI supercycle is the most significant technological shift of our lifetime. We help organizations bridge the gap between strategic vision and production-grade execution.',
   stats: [],
 };
 
-const missionPillars = [
+const beliefs = [
   {
     number: '01',
-    icon: Target,
-    title: 'Innovation',
-    description: 'Fostering ideas that transform into impactful solutions.',
+    title: 'AI is a technological supercycle',
+    description: 'This isn’t a trend. It’s a fundamental shift in how value is created and captured across every industry.',
   },
   {
     number: '02',
-    icon: Shield,
-    title: 'Integrity',
-    description: 'Upholding ethical standards in all our operations.',
+    title: 'AI-absent to AI-first',
+    description: 'Survival requires a transition from being AI-absent to AI-integrated, and eventually AI-first in every operation.',
   },
   {
     number: '03',
-    icon: Handshake,
-    title: 'Partnership',
-    description: 'Building strong relationships for mutual growth.',
-  },
-];
-
-const coreValues = [
-  {
-    number: '01',
-    icon: Users,
-    title: 'Client-First Approach',
-    description:
-      'We prioritize our clients needs, delivering solutions that exceed expectations.',
-  },
-  {
-    number: '02',
-    icon: Handshake,
-    title: 'Trust & Transparency',
-    description:
-      'Building lasting relationships through honesty and open communication.',
-  },
-  {
-    number: '03',
-    icon: GraduationCap,
-    title: 'Continuous Learning',
-    description:
-      'Fostering a culture of growth and development for our team.',
+    title: 'Embrace AI or be outpaced',
+    description: 'The competitive advantage of the next decade belongs to those who can operationalize intelligence at scale.',
   },
   {
     number: '04',
-    icon: Brain,
-    title: 'Excellence in AI',
-    description:
-      'Striving for the highest quality in AI solutions and services.',
-  },
-  {
-    number: '05',
-    icon: Scale,
-    title: 'Ethical AI',
-    description:
-      'Ensuring fairness, accountability, and transparency in all AI applications.',
-  },
-  {
-    number: '06',
-    icon: TrendingUp,
-    title: 'Commitment to Impact',
-    description:
-      'Dedicated to creating meaningful and positive change.',
+    title: 'In-house capability gap',
+    description: 'Most companies lack the senior engineering talent required to integrate AI seamlessly. We are that capability.',
   },
 ];
 
-const certifications = [
+const leadership = [
   {
-    number: '01',
-    icon: Lock,
-    title: 'ISO 27001 Ready',
-    description:
-      'Adhering to international standards for information security management.',
+    name: 'Prajwal',
+    role: 'Managing Partner',
+    bio: 'Senior architect with a focus on enterprise AI systems and agentic workflows.',
+    linkedin: '#',
+    twitter: '#',
   },
   {
-    number: '02',
-    icon: Cloud,
-    title: 'AWS & Azure Partner Tier',
-    description:
-      'Certified partners with leading cloud providers for robust solutions.',
-  },
-  {
-    number: '03',
-    icon: FileText,
-    title: 'GDPR & CCPA Compliant',
-    description:
-      'Ensuring data privacy and protection in line with global regulations.',
-  },
-  {
-    number: '04',
-    icon: Brain,
-    title: 'Responsible AI Framework',
-    description:
-      'Implementing ethical guidelines for the development and deployment of AI.',
-  },
-  {
-    number: '05',
-    icon: Shield,
-    title: 'Registered & Trusted by National Employment',
-    description:
-      'Recognized for our commitment to fair employment practices and employee welfare.',
+    name: 'Vipul Negi',
+    role: 'Technical Lead',
+    bio: 'Specialist in high-velocity engineering and modern stack transformation.',
+    linkedin: '#',
+    github: '#',
   },
 ];
 
-const teamStats = [
-  { value: '50+', label: 'AI Engineers & Data Scientists' },
-  { value: '15+', label: 'Years of Combined Experience' },
-  { value: '100+', label: 'Projects Delivered' },
-  { value: '25+', label: 'Global Reach' },
+const openRoles = [
+  {
+    title: 'Senior AI Engineer',
+    team: 'Engineering',
+    location: 'Remote / Ghaziabad',
+    comp: '$80k - $120k',
+  },
+  {
+    title: 'Solutions Architect',
+    team: 'Consulting',
+    location: 'Remote',
+    comp: '$90k - $140k',
+  },
+  {
+    title: 'Product Manager (AI)',
+    team: 'Product',
+    location: 'Ghaziabad',
+    comp: '$70k - $110k',
+  },
 ];
 
 export default function AboutUsPage() {
+  const closingCtaRef = useRef<HTMLElement | null>(null);
+
   return (
-    <main className="min-h-screen bg-[#020617] text-white antialiased">
+    <main className="min-h-screen bg-[#020617] text-white antialiased overflow-hidden">
       <Header />
 
       <Hero
@@ -151,106 +114,130 @@ export default function AboutUsPage() {
         stats={heroData.stats}
       />
 
-      {/* Mission Section */}
-      <section className="relative py-24 bg-[#020617]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Beliefs Section */}
+      <section className="relative py-16 sm:py-24 bg-[#020617]">
+        <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8">
           <SectionHeader
-            title="Our Mission"
-            description="To democratize future-ready advanced technology towards a better tomorrow and to empower individuals to achieve their full potential with the power of innovation and AI."
+            title="What We Believe"
+            description="Our core principles define how we think about the future of business and technology."
+            animateTitleLines
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {missionPillars.map((pillar) => (
-              <ServiceCard
-                key={pillar.number}
-                number={pillar.number}
-                icon={pillar.icon}
-                title={pillar.title}
-                description={pillar.description}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Core Values Section */}
-      <section className="relative py-24 bg-black/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeader
-            title="Core Values"
-            description="Our guiding principles that define our culture."
-          />
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {coreValues.map((value) => (
-              <ServiceCard
-                key={value.number}
-                number={value.number}
-                icon={value.icon}
-                title={value.title}
-                description={value.description}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Certifications Section */}
-      <section className="relative py-24 bg-[#020617]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-6 flex justify-center">
-            <span className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-white/80 uppercase tracking-wider">
-              Trust & Compliance
-            </span>
-          </div>
-          <SectionHeader
-            title="Certifications & Standards"
-            description="We maintain the highest standards of quality, security, and compliance to ensure your trust and confidence."
-          />
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {certifications.map((cert) => (
-              <ServiceCard
-                key={cert.number}
-                number={cert.number}
-                icon={cert.icon}
-                title={cert.title}
-                description={cert.description}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Team Section */}
-      <section className="relative py-24 bg-black/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeader
-            title="Our Team"
-            description="Meet our expert team of AI engineers, data scientists, and developers dedicated to innovation."
-          />
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
-            {teamStats.map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="text-5xl md:text-6xl font-black mb-2 text-white">
-                  {stat.value}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8 mt-10 sm:mt-12">
+            {beliefs.map((belief, index) => (
+              <Reveal key={belief.number} y={20} delayMs={index * 100}>
+                <div className="surface p-6 sm:p-8 border border-white/10 flex flex-col xs:flex-row gap-4 sm:gap-6 h-full">
+                  <div className="text-3xl sm:text-4xl font-display text-white/10 shrink-0 leading-none">{belief.number}</div>
+                  <div>
+                    <h3 className="text-base sm:text-xl font-bold text-white mb-2 leading-tight">{belief.title}</h3>
+                    <p className="text-xs sm:text-sm text-white/60 leading-relaxed">{belief.description}</p>
+                  </div>
                 </div>
-                <div className="text-white/70 text-sm md:text-base">
-                  {stat.label}
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Leadership Section */}
+      <section className="relative py-16 sm:py-24 bg-black/30">
+        <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8">
+          <SectionHeader
+            title="Our Leadership"
+            description="Meet the builders behind Astrenox."
+            animateTitleLines
+          />
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto mt-10 sm:mt-12">
+            {leadership.map((member, index) => (
+              <Reveal key={member.name} y={20} delayMs={index * 100}>
+                <div className="surface p-6 sm:p-8 gradient-border h-full flex flex-col">
+                  <div className="h-14 w-14 sm:h-16 sm:w-16 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mb-5 sm:mb-6 text-xl sm:text-2xl font-display shrink-0 mx-auto sm:mx-0">
+                    {member.name[0]}
+                  </div>
+                  <div className="text-center sm:text-left flex-1">
+                    <h3 className="text-xl sm:text-2xl font-bold text-white mb-1 leading-tight">{member.name}</h3>
+                    <p className="text-xs sm:text-sm text-purple-400 font-medium mb-3 sm:mb-4 uppercase tracking-wider">{member.role}</p>
+                    <p className="text-xs sm:text-sm text-white/60 mb-6 leading-relaxed">{member.bio}</p>
+                  </div>
+                  <div className="flex justify-center sm:justify-start gap-4 pt-4 border-t border-white/5">
+                    {member.linkedin && <Link href={member.linkedin} className="text-white/40 hover:text-white transition-colors"><Linkedin className="h-4.5 w-4.5 sm:h-5 sm:w-5" /></Link>}
+                    {member.twitter && <Link href={member.twitter} className="text-white/40 hover:text-white transition-colors"><Twitter className="h-4.5 w-4.5 sm:h-5 sm:w-5" /></Link>}
+                    {member.github && <Link href={member.github} className="text-white/40 hover:text-white transition-colors"><Github className="h-4.5 w-4.5 sm:h-5 sm:w-5" /></Link>}
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <div className="py-10 sm:py-12 border-y border-white/5 bg-[#020617]">
+        <p className="text-center text-[10px] sm:text-xs font-semibold tracking-[0.2em] sm:tracking-widest uppercase text-white/40 mb-6 sm:mb-8">Trusted by the best:</p>
+        <SocialProofSection />
+      </div>
+
+      {/* Careers Section */}
+      <section id="careers" className="relative py-16 sm:py-24 bg-[#020617]">
+        <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-16 items-start">
+            <Reveal y={20}>
+              <div className="lg:sticky lg:top-32 text-center lg:text-left">
+                <h2 className="text-2xl xs:text-3xl md:text-5xl font-display mb-5 sm:mb-6 leading-tight">Come make history</h2>
+                <p className="text-sm sm:text-base md:text-lg text-white/70 leading-relaxed mb-6 sm:mb-8">
+                  We are looking for senior builders who are tired of corporate bloat and want to ship meaningful AI systems at high velocity. If you care about outcomes more than hours, we want to talk.
+                </p>
+                <div className="surface p-5 sm:p-6 border-l-4 border-l-purple-500 text-left">
+                  <p className="text-xs sm:text-sm italic text-white/80 leading-relaxed">"Joining Astrenox means sitting in the code that will define the next decade of enterprise productivity."</p>
                 </div>
               </div>
-            ))}
+            </Reveal>
+            <Reveal y={20} delayMs={200}>
+              <div className="space-y-3.5 sm:space-y-4 mt-8 lg:mt-0">
+                {openRoles.map((role) => (
+                  <div key={role.title} className="surface p-5 sm:p-6 border border-white/5 hover:border-purple-500/30 transition-all group">
+                    <div className="flex justify-between items-start gap-4">
+                      <div className="min-w-0">
+                        <h4 className="text-base sm:text-lg font-bold text-white group-hover:text-purple-400 transition-colors truncate">{role.title}</h4>
+                        <div className="flex flex-wrap gap-x-4 gap-y-1 mt-2 text-[10px] sm:text-xs font-medium text-white/40 uppercase tracking-wider">
+                          <span className="flex items-center gap-1.5"><Briefcase className="h-3 w-3" /> {role.team}</span>
+                          <span className="flex items-center gap-1.5"><MapPin className="h-3 w-3" /> {role.location}</span>
+                        </div>
+                      </div>
+                      <Link href="/contact" className="shrink-0 h-9 w-9 sm:h-10 sm:w-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-slate-950 transition-all">
+                        <ArrowRight className="h-4 w-4" />
+                      </Link>
+                    </div>
+                    <div className="mt-4 pt-4 border-t border-white/5 text-[11px] sm:text-sm font-bold text-purple-400/80 uppercase tracking-wider">
+                      {role.comp}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <CTASection
-        title="Stay on the right side of history."
-        description="Ready to build something extraordinary? Let's collaborate and create the future together."
-        buttonText="Get Started →"
-      />
+      <section
+        ref={closingCtaRef}
+        className="relative py-16 md:py-32 overflow-hidden border-t border-white/5"
+      >
+        <DynamicMorphOverlay
+          targetRef={closingCtaRef}
+          gradient1={['#a855f7', '#0ea5e9']}
+          gradient2={['#22c55e', '#a855f7']}
+          opacity1={0.34}
+          opacity2={0.44}
+        />
+        <div className="relative z-10 max-w-4xl mx-auto px-3.5 sm:px-4 text-center">
+          <h2 className="text-2xl xs:text-3xl md:text-6xl font-display mb-6 sm:mb-8 leading-tight px-2">Stay on the right side of history.</h2>
+          <Link href="/contact" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-[12px] sm:rounded-[14px] bg-white text-slate-950 px-5 sm:px-10 py-3.5 sm:py-5 text-sm sm:text-base font-bold hover:bg-white/90 transition-all shadow-2xl">
+            Get Started
+            <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
+          </Link>
+        </div>
+      </section>
 
       <Footer />
     </main>

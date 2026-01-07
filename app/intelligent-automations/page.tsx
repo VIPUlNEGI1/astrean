@@ -1,17 +1,17 @@
 'use client';
 
 import {
-  Settings,
   TrendingUp,
-  FileText,
   Search,
   FileCheck,
   Shield,
-  ArrowUp,
   Cog,
-  Puzzle,
   Rocket,
   LineChart,
+  Bot,
+  UserCog,
+  Workflow,
+  ArrowRight,
 } from 'lucide-react';
 
 import Header from '@/components/layout/Header';
@@ -21,165 +21,60 @@ import SectionHeader from '@/components/sections/SectionHeader';
 import CTASection from '@/components/sections/CTASection';
 import ServiceCard from '@/components/ui/ServiceCard';
 import AssessmentCard from '@/components/ui/AssessmentCard';
+import Reveal from '@/components/motion/Reveal';
+import Link from 'next/link';
 
 const heroData = {
   title: 'Intelligent Automations',
   description:
-    "Deliver real-world solutions to accelerate your business and ensure you're fully leveraging the power of AI. Our hub is built for intelligent automation and our solutions provide value from day one.",
+    'Deliver real-world solutions to accelerate your business and ensure you’re fully leveraging the power of AI. Astrenox builds production-ready AI automations that plug directly into your existing tools, data, and teams to drive value from day one.',
   stats: [],
 };
 
-const automations = [
+const buildItems = [
   {
-    number: '01',
-    icon: Settings,
-    title: 'Process Automation',
-    description:
-      'Automate repetitive tasks and workflows across your business operations.',
-    features: [
-      'Customer Support',
-      'Data Entry',
-      'Reporting',
-      'Invoice Processing',
-    ],
+    title: 'AI Chatbots',
+    description: 'Support, onboarding, leads, or advisory. Deploy on your site, Slack, or via WhatsApp/SMS.',
+    icon: Bot,
   },
   {
-    number: '02',
-    icon: TrendingUp,
-    title: 'Predictive Analytics',
-    description:
-      'Leverage historical data to forecast future trends and make informed decisions.',
-    features: [
-      'Sales Forecasting',
-      'Demand Planning',
-      'Risk Assessment',
-      'Fraud Detection',
-    ],
+    title: 'AI Assistants / Co-pilots',
+    description: 'Internal assistants trained on your knowledge base to enforce SOPs across sales, ops, and compliance.',
+    icon: UserCog,
   },
   {
-    number: '03',
-    icon: FileText,
-    title: 'Content Generation',
-    description:
-      'Generate high-quality content for various purposes, from marketing copy to reports.',
-    features: [
-      'Blog Posts',
-      'Product Descriptions',
-      'Email Campaigns',
-      'Social Media Updates',
-    ],
-  },
-  {
-    number: '04',
-    icon: Search,
-    title: 'Knowledge Search',
-    description:
-      'Quickly find relevant information within your vast documents and databases.',
-    features: [
-      'Internal Knowledge Bases',
-      'Customer FAQs',
-      'Legal Documents',
-      'Research Papers',
-    ],
-  },
-  {
-    number: '05',
-    icon: FileCheck,
-    title: 'Document & Report Automation',
-    description:
-      'Automate the creation, extraction, and processing of documents and reports.',
-    features: [
-      'Contract Generation',
-      'Invoice Processing',
-      'Financial Reports',
-      'Compliance Audits',
-    ],
-  },
-];
-
-const enterpriseFeatures = [
-  {
-    number: '01',
-    icon: TrendingUp,
-    title: 'Measurable Impact',
-    description:
-      'Track and analyze the performance of your automations to demonstrate clear ROI.',
-    features: [
-      'Cost Savings',
-      'Efficiency Gains',
-      'Productivity Boost',
-      'Improved Accuracy',
-    ],
-  },
-  {
-    number: '02',
-    icon: Shield,
-    title: 'Security & Business',
-    description:
-      'Ensure your data and automations are protected with industry-leading security measures.',
-    features: [
-      'Data Encryption',
-      'Access Controls',
-      'Compliance Certifications',
-      'Threat Detection',
-    ],
-  },
-  {
-    number: '03',
-    icon: ArrowUp,
-    title: 'Enterprise-Grade Scalability',
-    description:
-      'Scale your automations to meet the growing demands of your business.',
-    features: [
-      'High Availability',
-      'Load Balancing',
-      'Elastic Infrastructure',
-      'Global Deployment',
-    ],
-  },
-];
-
-const processSteps = [
-  {
-    number: '01',
-    icon: Search,
-    title: 'Discovery & Prioritization',
-    description:
-      'Identify your high-impact automation opportunities and prioritize them based on business value.',
-  },
-  {
-    number: '02',
-    icon: Cog,
-    title: 'Design & Orchestration',
-    description:
-      'Develop a detailed design and architecture for your automation, leveraging proven patterns and best practices.',
-  },
-  {
-    number: '03',
-    icon: Puzzle,
-    title: 'Integration & Delivery',
-    description:
-      'Seamlessly integrate your automations into existing systems and workflows.',
-  },
-  {
-    number: '04',
+    title: 'Autonomous Agents',
+    description: 'Task decomposition and execution using search, APIs, and databases to handle complex multi-step goals.',
     icon: Rocket,
-    title: 'Deployment & Enablement',
-    description:
-      'Deploy your automations to production and provide training and support to your team.',
   },
   {
-    number: '05',
-    icon: LineChart,
-    title: 'Monitoring & Optimization',
-    description:
-      'Continuously monitor the performance of your automations and optimize them for maximum impact.',
+    title: 'Workflow Automations',
+    description: 'Content generation, outbound sequencing, call summaries, and automated analytics pipelines.',
+    icon: Workflow,
   },
+  {
+    title: 'Knowledge Search',
+    description: 'Permission-aware retrieval with live sync across all your enterprise data sources.',
+    icon: Search,
+  },
+  {
+    title: 'Document Automations',
+    description: 'Automate RFP responses, proposals, reports, and analysis accelerators with precision.',
+    icon: FileCheck,
+  },
+];
+
+const howWeBuild = [
+  { title: 'Proven Patterns', desc: 'Start from our library of battle-tested templates and accelerators.' },
+  { title: 'Connect Data', desc: 'Sync with 30+ sources: Drive, Notion, Salesforce, HubSpot, and more.' },
+  { title: 'Compose Visually', desc: 'Build complex logic via our visual orchestrator or robust SDK.' },
+  { title: 'Best Models', desc: 'Access OpenAI, Anthropic, Google, Llama, and Mistral via a single API.' },
+  { title: 'Deploy Everywhere', desc: 'Embed on web, share links, or integrate with Slack and messaging.' },
 ];
 
 export default function IntelligentAutomationsPage() {
   return (
-    <main className="min-h-screen bg-[#020617] text-white antialiased">
+    <main className="min-h-screen bg-[#020617] text-white antialiased overflow-hidden">
       <Header />
 
       <Hero
@@ -188,132 +83,136 @@ export default function IntelligentAutomationsPage() {
         stats={heroData.stats}
       />
 
-      {/* Production-Ready Automations Section */}
-      <section className="relative py-24 bg-[#020617]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-16 sm:py-24 bg-[#020617]">
+        <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8">
           <SectionHeader
-            title="Production-Ready AI"
-            titleGradient="Automations"
-            description="Our platform provides a comprehensive suite of services designed to help you build, deploy, and manage AI automations with ease."
+            title="What We Build"
+            description="Custom AI solutions designed for enterprise-scale impact."
+            animateTitleLines
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {automations.map((automation) => (
-              <div
-                key={automation.number}
-                className="border border-white/10 bg-black/30 rounded-lg p-6 hover:border-purple-500/50 transition-all duration-300"
-              >
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center">
-                    <automation.icon className="w-5 h-5 text-purple-400" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mt-10 sm:mt-12">
+            {buildItems.map((item, index) => (
+              <Reveal key={item.title} y={20} delayMs={index * 100}>
+                <div className="surface p-6 sm:p-8 border border-white/5 hover:border-purple-500/30 transition-colors h-full group">
+                  <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-[12px] sm:rounded-[14px] bg-white/5 border border-white/10 flex items-center justify-center mb-5 sm:mb-6 group-hover:bg-purple-500/10 transition-colors shrink-0">
+                    <item.icon className="h-5 w-5 sm:h-6 sm:w-6 text-purple-400" />
                   </div>
-                  <span className="text-2xl font-bold text-white/30">
-                    {automation.number}
-                  </span>
+                  <h3 className="text-lg sm:text-xl font-bold text-white mb-2 leading-tight">{item.title}</h3>
+                  <p className="text-xs sm:text-sm text-white/60 leading-relaxed">{item.description}</p>
                 </div>
-                <h3 className="text-xl font-bold mb-3 text-white">
-                  {automation.title}
-                </h3>
-                <p className="text-white/60 text-sm mb-4">
-                  {automation.description}
-                </p>
-                <ul className="space-y-2">
-                  {automation.features.map((feature, index) => (
-                    <li
-                      key={index}
-                      className="text-white/70 text-sm flex items-center gap-2"
-                    >
-                      <span className="text-purple-400">•</span>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              </Reveal>
             ))}
+          </div>
+          <div className="mt-12 sm:mt-16 text-center">
+            <Link href="/contact" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-[12px] sm:rounded-[14px] bg-white text-slate-950 px-5 sm:px-10 py-3.5 sm:py-4 text-sm sm:text-base font-bold hover:bg-white/90 transition-colors shadow-2xl">
+              Scope my first use case
+              <ArrowRight className="h-4 w-4" />
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* Enterprise Features Section */}
-      <section className="relative py-24 bg-black/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-16 sm:py-24 bg-black/30 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8">
           <SectionHeader
-            title="Enterprise-Grade AI"
-            titleGradient="Automations"
-            description="Our platform is built to meet the rigorous demands of enterprise environments, providing reliability, security, and scalability."
+            title="How We Build It"
+            description="A streamlined path from data to deployed intelligence."
+            animateTitleLines
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {enterpriseFeatures.map((feature) => (
-              <div
-                key={feature.number}
-                className="border border-white/10 bg-black/30 rounded-lg p-6 hover:border-purple-500/50 transition-all duration-300"
-              >
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center">
-                    <feature.icon className="w-5 h-5 text-purple-400" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-6 mt-10 sm:mt-16">
+            {howWeBuild.map((step, index) => (
+              <Reveal key={step.title} y={20} delayMs={index * 100} className="h-full">
+                <div className="relative p-5 sm:p-6 surface border border-white/10 h-full group">
+                  <div className="text-3xl sm:text-4xl font-display text-white/10 absolute top-4 right-6 group-hover:text-purple-500/10 transition-colors">{index + 1}</div>
+                  <h4 className="text-sm sm:text-base font-bold text-white mb-2 pr-8 leading-tight">{step.title}</h4>
+                  <p className="text-[11px] sm:text-xs text-white/60 leading-relaxed">{step.desc}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+          <div className="mt-10 sm:mt-12 text-center">
+            <Link href="/contact" className="text-purple-400 hover:text-purple-300 font-semibold flex items-center justify-center gap-2 text-sm sm:text-base">
+              See our data connectors
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="relative py-16 sm:py-24 bg-[#020617]">
+        <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8">
+          <SectionHeader
+            title="What You Get"
+            description="Enterprise-grade reliability and measurable ROI."
+            animateTitleLines
+          />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8 mt-10 sm:mt-12">
+            {[
+              { title: 'Measurable Impact', desc: 'Track performance and ROI with built-in analytics dashboards.' },
+              { title: 'Accuracy & Freshness', desc: 'Live-synced retrieval ensures your AI always has the latest facts.' },
+              { title: 'Enterprise Integration', desc: 'Production-ready triggers, actions, and robust API endpoints.' },
+            ].map((benefit, i) => (
+              <Reveal key={i} y={20} delayMs={i * 100}>
+                <div className="flex gap-4 items-start surface p-6 sm:p-8 border-l-4 border-l-purple-500 h-full">
+                  <TrendingUp className="h-5 w-5 sm:h-6 sm:w-6 text-purple-400 shrink-0" />
+                  <div>
+                    <h4 className="text-base sm:text-lg font-bold text-white mb-1.5 sm:mb-2 leading-tight">{benefit.title}</h4>
+                    <p className="text-xs sm:text-sm text-white/65 leading-relaxed">{benefit.desc}</p>
                   </div>
-                  <span className="text-2xl font-bold text-white/30">
-                    {feature.number}
-                  </span>
                 </div>
-                <h3 className="text-xl font-bold mb-3 text-white">
-                  {feature.title}
-                </h3>
-                <p className="text-white/60 text-sm mb-4">
-                  {feature.description}
-                </p>
-                <ul className="space-y-2">
-                  {feature.features.map((item, index) => (
-                    <li
-                      key={index}
-                      className="text-white/70 text-sm flex items-center gap-2"
-                    >
-                      <span className="text-purple-400">•</span>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Process Section */}
-      <section className="relative py-24 bg-[#020617]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-6 flex justify-center">
-            <span className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-white/80">
-              Our Process
-            </span>
-          </div>
+      <section className="relative py-16 sm:py-24 bg-black/30">
+        <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8">
           <SectionHeader
-            title="Five-Step Process to AI Automation"
-            titleGradient="Success"
-            description="We guide you through a structured methodology to ensure successful implementation and adoption of your AI automations."
+            title="Our Engagement Model"
+            description="Five steps to automation success."
+            animateTitleLines
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
-            {processSteps.map((step) => (
-              <AssessmentCard
-                key={step.number}
-                number={step.number}
-                icon={step.icon}
-                title={step.title}
-                description={step.description}
-              />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-6 mt-10 sm:mt-12">
+            {[
+              { title: 'Discovery & Prioritization', icon: Search, desc: 'Identify high-impact use cases.' },
+              { title: 'Design & Orchestration', icon: Cog, desc: 'Architecting the agentic logic.' },
+              { title: 'Integration & Security', icon: Shield, desc: 'Connecting tools safely.' },
+              { title: 'Deployment & Enablement', icon: Rocket, desc: 'Going live and training teams.' },
+              { title: 'Monitor & Optimize', icon: LineChart, desc: 'Continuous improvement loops.' },
+            ].map((step, index) => (
+              <Reveal key={index} y={20} delayMs={index * 100}>
+                <AssessmentCard
+                  number={(index + 1).toString().padStart(2, '0')}
+                  icon={step.icon}
+                  title={step.title}
+                  description={step.desc}
+                />
+              </Reveal>
             ))}
+          </div>
+          <div className="mt-12 sm:mt-16 text-center px-3.5">
+            <Link href="/contact" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-[12px] sm:rounded-[14px] bg-white text-slate-950 px-5 sm:px-10 py-3.5 sm:py-4 font-bold hover:bg-white/90 transition-all shadow-xl text-sm sm:text-base">
+              Start Discovery
+              <ArrowRight className="h-4 w-4" />
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <CTASection
-        title="Ready to Automate Your Business Processes?"
-        description="Request a demo to see how our intelligent automations can transform your operations."
-        buttonText="Request a Demo"
-      />
+      <section className="relative py-16 md:py-32 overflow-hidden border-t border-white/5">
+        <div className="relative z-10 max-w-4xl mx-auto px-3.5 sm:px-4 text-center">
+          <h2 className="text-2xl xs:text-3xl md:text-6xl font-display mb-6 sm:mb-8 leading-tight">Ready to automate intelligently?</h2>
+          <p className="text-sm sm:text-base md:text-lg text-white/60 mb-8 sm:mb-12 leading-relaxed">Let’s scope your first high-impact use case.</p>
+          <Link href="/contact" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-[12px] sm:rounded-[14px] bg-white text-slate-950 px-5 sm:px-10 py-3.5 sm:py-5 text-sm sm:text-base font-bold hover:bg-white/90 transition-all shadow-2xl">
+            Get Started
+            <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
+          </Link>
+        </div>
+      </section>
 
       <Footer />
     </main>

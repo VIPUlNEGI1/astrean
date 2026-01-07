@@ -1,23 +1,19 @@
 'use client';
 
 import {
-  Lightbulb,
   Brain,
   Target,
   Users,
-  AlertCircle,
   DollarSign,
-  Clock,
   CheckCircle,
   ArrowRight,
   Database,
-  Network,
   Code,
-  Plug,
-  Eye,
   RefreshCw,
   MessageSquare,
-  Book,
+  Zap,
+  Layers,
+  Cpu,
 } from 'lucide-react';
 
 import Header from '@/components/layout/Header';
@@ -27,144 +23,70 @@ import SectionHeader from '@/components/sections/SectionHeader';
 import CTASection from '@/components/sections/CTASection';
 import ServiceCard from '@/components/ui/ServiceCard';
 import ProblemCard from '@/components/ui/ProblemCard';
+import Reveal from '@/components/motion/Reveal';
+import Link from 'next/link';
 
 const heroData = {
   title: 'AI Engineering',
   description:
-    'We provide end-to-end engineering services, with a focus on quality. Our AI engineering delivers production-ready solutions that are easy to maintain.',
+    'We provide high-velocity engineering-as-a-service, without sacrificing quality. Astrenox engineers are builders first, specialized in deploying production-ready AI systems that scale.',
   stats: [],
 };
 
-const philosophy = [
+const beliefs = [
   {
-    number: '01',
-    icon: Target,
-    title: 'Build for the Best',
-    description:
-      'We strive to build the most robust, scalable, and efficient AI systems that deliver exceptional performance.',
-  },
-  {
-    number: '02',
-    icon: Brain,
-    title: 'Use AI Judiciously',
-    description:
-      'We leverage AI to solve complex problems, but always with a focus on ethical considerations and human oversight.',
-  },
-  {
-    number: '03',
-    icon: Target,
-    title: 'Focus on Outcomes',
-    description:
-      'Our ultimate goal is to deliver tangible results that drive business value and impact.',
-  },
-];
-
-const challenges = [
-  {
+    title: 'Hire the best',
+    description: 'We only hire the top 1% of engineering talent. No juniors, no bloat—just senior builders who understand the full stack.',
     icon: Users,
-    title: 'Scarcity of Talent',
-    description:
-      'Finding and retaining skilled AI engineers, data scientists, and MLOps specialists is a major hurdle.',
   },
   {
+    title: 'Use AI (a lot)',
+    description: 'We leverage AI to build AI. Our internal velocity is multiplied by the same tools we deploy for you.',
+    icon: Zap,
+  },
+  {
+    title: 'Charge on outcomes',
+    description: 'We don’t bill for hours; we bill for milestones. If the code doesn’t work, we don’t win.',
+    icon: Target,
+  },
+  {
+    title: 'Pay on outcomes',
+    description: 'Our engineers are incentivized by the success of your project, aligning our internal culture with your business goals.',
     icon: DollarSign,
-    title: 'High Costs',
-    description:
-      'The investment required for salaries, infrastructure, and tools can be substantial, especially for startups.',
-  },
-  {
-    icon: Clock,
-    title: 'Rapidly Evolving Landscape',
-    description:
-      'The constant evolution of AI technologies, frameworks, and best practices makes it hard to keep up.',
-  },
-  {
-    icon: Users,
-    title: 'Scaling Out Teams',
-    description:
-      'Effectively scaling AI teams while maintaining quality and efficiency presents unique organizational challenges.',
   },
 ];
 
-const services = [
+const capabilities = [
   {
-    number: '01',
-    icon: Lightbulb,
-    title: 'AI Strategy & Roadmap',
-    description:
-      'Develop a clear AI strategy and roadmap aligned with your business goals.',
+    title: 'Application Development',
+    description: 'Full-stack AI-first applications built with React, Next.js, and robust Python backends.',
+    icon: Code,
   },
   {
-    number: '02',
-    icon: Database,
-    title: 'Data Engineering & MLOps',
-    description:
-      'Build robust data pipelines and MLOps infrastructure for seamless AI deployment.',
-  },
-  {
-    number: '03',
+    title: 'Fine-Tuning Models',
+    description: 'Customizing LLMs on your proprietary data to achieve domain-specific excellence.',
     icon: Brain,
-    title: 'Custom Model Development',
-    description:
-      'Design, train, and optimize custom AI models tailored to your specific needs.',
   },
   {
-    number: '04',
-    icon: Plug,
-    title: 'AI Integration & Deployment',
-    description:
-      'Integrate AI solutions into existing systems and deploy them efficiently.',
-  },
-  {
-    number: '05',
-    icon: Eye,
-    title: 'AI Model Monitoring & Maintenance',
-    description:
-      'Ensure the ongoing performance, accuracy, and reliability of your AI models.',
-  },
-];
-
-const workModel = [
-  {
-    number: '01',
-    icon: Users,
-    title: 'Dedicated Team',
-    description:
-      'We assign a dedicated team of AI engineers and data scientists to work closely with your internal team.',
-  },
-  {
-    number: '02',
+    title: 'Code Migration & Refactors',
+    description: 'Modernizing legacy systems to be AI-ready and performance-optimized.',
     icon: RefreshCw,
-    title: 'Agile Approach',
-    description:
-      'We adopt agile methodologies to ensure flexibility, transparency, and continuous delivery.',
   },
   {
-    number: '03',
-    icon: CheckCircle,
-    title: 'Project Management',
-    description:
-      'Our experienced project managers oversee the entire project lifecycle, ensuring timely delivery.',
+    title: 'Data Engineering & Analysis',
+    description: 'Building the pipelines and RAG architectures that fuel intelligent insights.',
+    icon: Database,
   },
   {
-    number: '04',
-    icon: MessageSquare,
-    title: 'Communication',
-    description:
-      'Regular communication and progress updates keep you informed every step of the way.',
-  },
-  {
-    number: '05',
-    icon: Book,
-    title: 'Knowledge Transfer',
-    description:
-      'We ensure thorough knowledge transfer to empower your team for long-term success.',
+    title: 'Custom Agentic Solutions',
+    description: 'Deploying autonomous agents that can reason, plan, and execute multi-step workflows.',
+    icon: Cpu,
   },
 ];
 
 export default function AIEngineeringPage() {
   return (
-    <main className="min-h-screen bg-[#020617] text-white antialiased">
+    <main className="min-h-screen bg-[#020617] text-white antialiased overflow-hidden">
       <Header />
 
       <Hero
@@ -173,131 +95,132 @@ export default function AIEngineeringPage() {
         stats={heroData.stats}
       />
 
-      {/* Engineering Philosophy Section */}
-      <section className="relative py-24 bg-[#020617]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Beliefs Section */}
+      <section className="relative py-16 sm:py-24 bg-[#020617]">
+        <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8">
           <SectionHeader
-            title="Our Engineering Philosophy"
-            description="We believe that great engineering is an art form, built on a foundation of principles."
+            title="What We Believe"
+            description="Our engineering culture is built on four core pillars that drive our velocity and quality."
+            animateTitleLines
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {philosophy.map((item) => (
-              <ServiceCard
-                key={item.number}
-                number={item.number}
-                icon={item.icon}
-                title={item.title}
-                description={item.description}
-              />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            {beliefs.map((belief, index) => (
+              <Reveal key={belief.title} y={20} delayMs={index * 100} className="h-full">
+                <div className="surface p-6 sm:p-8 gradient-border h-full flex flex-col">
+                  <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-[12px] sm:rounded-[14px] bg-white/5 border border-white/10 flex items-center justify-center mb-5 sm:mb-6 shrink-0">
+                    <belief.icon className="h-5 w-5 sm:h-6 sm:w-6 text-purple-400" />
+                  </div>
+                  <h3 className="text-lg sm:text-xl font-bold text-white mb-3 sm:mb-4">{belief.title}</h3>
+                  <p className="text-white/65 text-xs sm:text-sm leading-relaxed flex-1">{belief.description}</p>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Challenges Section */}
-      <section className="relative py-24 bg-black/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Why You Need Us Section */}
+      <section className="relative py-16 sm:py-24 bg-black/30">
+        <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8">
           <SectionHeader
-            title="The Challenges of Building"
-            titleGradient="AI Teams"
-            description="Building an internal AI engineering capability requires expertise, and significant time and effort, particularly for non-AI-native companies."
+            title="Why You Need Us"
+            description="Building an elite AI engineering team is slow and expensive. We provide the shortcut."
+            animateTitleLines
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            {challenges.map((challenge, index) => (
-              <ProblemCard
-                key={index}
-                icon={challenge.icon}
-                title={challenge.title}
-                description={challenge.description}
-              />
-            ))}
-          </div>
-
-          <div className="max-w-3xl mx-auto">
-            <h3 className="text-2xl font-bold mb-4 text-white">
-              The Astrenox Solution
-            </h3>
-            <p className="text-white/70 mb-6">
-              We provide expert AI engineering talent on-demand, allowing you to
-              scale your AI initiatives quickly and efficiently, without the
-              overhead of building an internal team from scratch.
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="border border-white/10 bg-black/30 rounded-lg p-4">
-                <ArrowRight className="w-6 h-6 text-purple-400 mb-2" />
-                <p className="text-white">Access top-tier AI talent instantly.</p>
-              </div>
-              <div className="border border-white/10 bg-black/30 rounded-lg p-4">
-                <ArrowRight className="w-6 h-6 text-purple-400 mb-2" />
-                <p className="text-white">
-                  Scale your AI projects up or down as needed.
-                </p>
-              </div>
-              <div className="border border-white/10 bg-black/30 rounded-lg p-4">
-                <CheckCircle className="w-6 h-6 text-purple-400 mb-2" />
-                <p className="text-white">
-                  Reduce overhead and accelerate time-to-market.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Services Section */}
-      <section className="relative py-24 bg-[#020617]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeader
-            title="Comprehensive AI Engineering"
-            titleGradient="Services"
-            description="We offer a full spectrum of AI engineering services, from strategy and design to deployment and maintenance."
-          />
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {services.map((service) => (
-              <ServiceCard
-                key={service.number}
-                number={service.number}
-                icon={service.icon}
-                title={service.title}
-                description={service.description}
-              />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8 mt-10 sm:mt-12">
+            {[
+              { title: 'Hiring Risks', desc: 'Avoid the 6-month hiring cycle and the risk of a bad technical fit.' },
+              { title: 'Cost Efficiency', desc: 'On-demand senior talent is cheaper than maintaining a bloated internal bench.' },
+              { title: 'Velocity Advantage', desc: 'We ship in days what takes internal teams months to scope.' },
+              { title: 'Unwinding Bad Habits', desc: 'We bring best-in-class MLOps and engineering standards to your stack.' },
+            ].map((item, i) => (
+              <Reveal key={i} y={20} delayMs={i * 100}>
+                <div className="flex gap-4 sm:gap-6 items-start surface p-6 sm:p-8 h-full">
+                  <div className="h-9 w-9 sm:h-10 sm:w-10 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center shrink-0">
+                    <CheckCircle className="h-4.5 w-4.5 sm:h-5 sm:w-5 text-emerald-400" />
+                  </div>
+                  <div>
+                    <h4 className="text-base sm:text-lg font-bold text-white mb-1.5 sm:mb-2">{item.title}</h4>
+                    <p className="text-xs sm:text-sm text-white/65 leading-relaxed">{item.desc}</p>
+                  </div>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* How We Work Section */}
-      <section className="relative py-24 bg-black/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Capabilities Section */}
+      <section className="relative py-16 sm:py-24 bg-[#020617]">
+        <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8">
           <SectionHeader
-            title="How We Work With"
-            titleGradient="Your Team"
-            description="Our engagement model is designed to seamlessly integrate with your existing team and workflows."
+            title="What We Do"
+            description="Comprehensive AI engineering capabilities to build what’s next."
+            animateTitleLines
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {workModel.map((item) => (
-              <ServiceCard
-                key={item.number}
-                number={item.number}
-                icon={item.icon}
-                title={item.title}
-                description={item.description}
-              />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+            {capabilities.map((cap, index) => (
+              <Reveal key={cap.title} y={20} delayMs={index * 100}>
+                <div className="surface p-6 sm:p-8 border border-white/5 hover:border-purple-500/30 transition-colors group h-full">
+                  <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-[12px] sm:rounded-[14px] bg-white/5 border border-white/10 flex items-center justify-center mb-5 sm:mb-6 group-hover:bg-purple-500/10 transition-colors shrink-0">
+                    <cap.icon className="h-5 w-5 sm:h-6 sm:w-6 text-purple-400" />
+                  </div>
+                  <h3 className="text-base sm:text-lg md:text-xl font-bold text-white mb-2">{cap.title}</h3>
+                  <p className="text-xs sm:text-sm text-white/60 leading-relaxed">{cap.description}</p>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <CTASection
-        title="Ready to Build Production-Ready AI Solutions?"
-        description="Let's discuss how our AI engineering services can accelerate your AI initiatives."
-        buttonText="Get Started Now"
-      />
+      {/* Engagement Model Section */}
+      <section className="relative py-16 sm:py-24 bg-black/30">
+        <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8">
+          <SectionHeader
+            title="Why Work With Us"
+            description="Our engagement model is designed for transparency, speed, and seamless integration."
+            animateTitleLines
+          />
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            {[
+              { title: 'Dedicated Team', icon: Users, desc: 'A senior-only squad that learns your business and stack.' },
+              { title: 'Sprint Cycles', icon: RefreshCw, desc: 'Weekly deployments and rapid feedback loops.' },
+              { title: 'Project Management', icon: Layers, desc: 'Full transparency via Jira/Linear and regular syncs.' },
+              { title: 'Slack & Code', icon: MessageSquare, desc: 'Direct access to engineers via Slack and GitHub.' },
+            ].map((item, index) => (
+              <Reveal key={item.title} y={20} delayMs={index * 100}>
+                <div className="surface p-5 sm:p-6 h-full border border-white/10">
+                  <item.icon className="h-5 w-5 sm:h-6 sm:w-6 text-purple-400 mb-3 sm:mb-4 shrink-0" />
+                  <h4 className="text-sm sm:text-base font-bold text-white mb-1.5 sm:mb-2">{item.title}</h4>
+                  <p className="text-xs sm:text-sm text-white/60 leading-relaxed">{item.desc}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          <div className="mt-12 sm:mt-16 text-center">
+            <Link href="/intelligent-automations" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 text-purple-400 hover:text-purple-300 transition-colors font-semibold text-sm sm:text-base">
+              See Intelligent Automations
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="relative py-16 md:py-32 overflow-hidden border-t border-white/5">
+        <div className="relative z-10 max-w-4xl mx-auto px-3.5 sm:px-4 text-center">
+          <h2 className="text-2xl xs:text-3xl md:text-6xl font-display mb-6 sm:mb-8 leading-tight px-2">Stay on the right side of history.</h2>
+          <Link href="/contact" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-[12px] sm:rounded-[14px] bg-white text-slate-950 px-8 sm:px-10 py-3.5 sm:py-5 text-sm sm:text-base font-bold hover:bg-white/90 transition-all">
+            Get Started
+            <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
+          </Link>
+        </div>
+      </section>
 
       <Footer />
     </main>

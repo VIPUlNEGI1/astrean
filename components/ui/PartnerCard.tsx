@@ -16,14 +16,19 @@ export default function PartnerCard({
   logoBgColor = 'bg-green-500/20',
 }: PartnerCardProps) {
   return (
-    <div className="relative group border border-white/10 bg-black/30 rounded-lg p-8 hover:border-purple-500/50 transition-all duration-300 hover:shadow-[0_0_20px_rgba(79,70,229,0.2)]">
+    <div className="group relative surface surface-hover shine p-5 sm:p-7 text-center">
+      <div className="pointer-events-none absolute inset-0 rounded-[var(--radius-lg)] bg-gradient-to-b from-white/[0.06] to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
       <div
-        className={`w-16 h-16 rounded-full ${logoBgColor} flex items-center justify-center mb-4 mx-auto`}
+        className={`relative mx-auto mb-3 sm:mb-4 flex h-10 w-10 sm:h-14 sm:w-14 items-center justify-center rounded-full border border-white/10 ${logoBgColor}`}
       >
-        {logo}
+        <div className="scale-75 sm:scale-100">{logo}</div>
       </div>
-      <h3 className="text-xl font-bold text-center mb-2 text-white">{name}</h3>
-      <p className="text-white/60 text-sm text-center">{description}</p>
+      <h3 className="relative text-sm sm:text-base font-semibold tracking-tight text-white">
+        {name}
+      </h3>
+      <p className="relative mt-1.5 sm:mt-2 text-xs sm:text-sm leading-relaxed text-white/65 line-clamp-2 sm:line-clamp-none">
+        {description}
+      </p>
     </div>
   );
 }

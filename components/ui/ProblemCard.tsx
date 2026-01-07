@@ -14,12 +14,26 @@ export default function ProblemCard({
   description,
 }: ProblemCardProps) {
   return (
-    <div className="relative group border border-red-500/20 bg-black/30 rounded-lg p-8 hover:border-red-500/40 transition-all duration-300">
-      <div className="w-12 h-12 rounded-lg bg-red-500/20 flex items-center justify-center mb-6">
-        <Icon className="w-6 h-6 text-red-400" />
+    <div className="group relative surface surface-hover shine p-5 sm:p-8">
+      <div
+        className="pointer-events-none absolute inset-0 rounded-[var(--radius-lg)] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+        aria-hidden="true"
+        style={{
+          background:
+            'radial-gradient(700px 260px at 50% 0%, rgba(251,113,133,0.16), transparent 60%)',
+        }}
+      />
+      <div className="relative z-10 flex flex-col items-center xs:items-start text-center xs:text-left">
+        <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-[12px] sm:rounded-[16px] border border-white/10 bg-white/5 shrink-0">
+          <Icon className="h-5 w-5 sm:h-6 sm:w-6 text-rose-300" />
+        </div>
+        <h3 className="mt-4 sm:mt-6 text-base sm:text-lg font-semibold tracking-tight text-white">
+          {title}
+        </h3>
+        <p className="mt-2 text-xs sm:text-sm leading-relaxed text-white/65">
+          {description}
+        </p>
       </div>
-      <h3 className="text-xl font-bold mb-3 text-white">{title}</h3>
-      <p className="text-white/60">{description}</p>
     </div>
   );
 }
