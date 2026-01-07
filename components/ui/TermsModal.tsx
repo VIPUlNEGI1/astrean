@@ -37,7 +37,7 @@ export default function TermsModal() {
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center sm:items-end justify-center sm:justify-start p-3 sm:p-6 animate-in fade-in duration-300 bg-black/40 sm:bg-transparent backdrop-blur-[2px] sm:backdrop-blur-none">
-      <div className="relative w-full max-w-[calc(100vw-24px)] xs:max-w-lg rounded-2xl border border-white/10 bg-[#0b1220] shadow-2xl overflow-hidden animate-in zoom-in-95 duration-300">
+      <div className="relative w-full max-w-[calc(36vw-24px)] xs:max-w-lg rounded-2xl border border-white/10 bg-[#0b1220] shadow-2xl overflow-hidden animate-in zoom-in-95 duration-300">
         {/* Header */}
         <div className="bg-gradient-to-r from-purple-500/10 to-cyan-500/10 p-4 sm:p-6 border-b border-white/5">
           <div className="flex items-center gap-3">
