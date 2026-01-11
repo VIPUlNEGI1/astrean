@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import AssistBot from "@/components/ui/AssistBot";
-import CookieBanner from "@/components/ui/CookieBanner";
 import TermsModal from "@/components/ui/TermsModal";
 
 const inter = Inter({
@@ -27,9 +26,10 @@ export default function RootLayout({
       <body
         className={`${inter.variable} antialiased font-sans animate-in fade-in duration-700`}
       >
-        {children}
+        <div className="relative overflow-x-hidden min-h-screen">
+          {children}
+        </div>
         <AssistBot />
-        <CookieBanner />
         <TermsModal />
       </body>
     </html>
