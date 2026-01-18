@@ -46,7 +46,7 @@ const beliefs = [
   },
   {
     title: 'Charge on outcomes',
-    description: 'We don’t bill for hours; we bill for milestones. If the code doesn’t work, we don’t win.',
+    description: 'We don’t bill for hours, we bill for milestones. If the code doesn’t work, we don’t win.',
     icon: Target,
   },
   {
@@ -215,7 +215,7 @@ export default function AIEngineeringPage() {
       <section className="relative py-16 md:py-32 overflow-hidden border-t border-white/5">
         <div className="relative z-10 max-w-4xl mx-auto px-3.5 sm:px-4 text-center">
           <h2 className="text-2xl xs:text-3xl md:text-6xl font-display mb-6 sm:mb-8 leading-tight px-2">Stay on the right side of history.</h2>
-          <Link href="/contact" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-[12px] sm:rounded-[14px] bg-white text-slate-950 px-8 sm:px-10 py-3.5 sm:py-5 text-sm sm:text-base font-bold hover:bg-white/90 transition-all">
+          <Link href="/get-started" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-[12px] sm:rounded-[14px] bg-white text-slate-950 px-8 sm:px-10 py-3.5 sm:py-5 text-sm sm:text-base font-bold hover:bg-white/90 transition-all">
             Get Started
             <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
           </Link>

@@ -69,7 +69,7 @@ export default function CompanyPage() {
             animateTitleLines
           />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8 mt-10 sm:mt-16 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 mt-10 sm:mt-16 max-w-4xl mx-auto">
             <Reveal y={20}>
               <Link href="/company#insights" className="block surface p-6 sm:p-8 border border-white/5 hover:border-purple-500/30 transition-all group h-full">
                 <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-[12px] sm:rounded-[14px] bg-white/5 border border-white/10 flex items-center justify-center mb-5 sm:mb-6 group-hover:bg-purple-500/10 transition-colors shrink-0">
@@ -98,7 +98,7 @@ export default function CompanyPage() {
         <div className="relative z-10 max-w-4xl mx-auto px-3.5 sm:px-4 text-center">
           <h2 className="text-2xl xs:text-3xl md:text-6xl font-display mb-6 sm:mb-8 leading-tight">Let’s Build the Future Together.</h2>
           <Link href="/contact" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-[12px] sm:rounded-[14px] bg-white text-slate-950 px-8 sm:px-10 py-3.5 sm:py-5 text-sm sm:text-base font-bold hover:bg-white/90 transition-all shadow-2xl">
-            Contact Us
+            Contact us
             <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
           </Link>
         </div>

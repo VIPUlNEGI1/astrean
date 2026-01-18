@@ -55,15 +55,15 @@ const stats = [
 const ourWork = [
   {
     title: 'Ops Copilot',
-    desc: 'From detailed specification to a live product in 13 days. Forty pilot users in the first week through target outreach.',
+    desc: 'From detailed specification to a live product in 13 days. Forty pilot users in the first week through target outreach and warm intros.',
   },
   {
     title: 'Fintech Dashboard',
-    desc: 'Version zero shipped in two weeks. Two design partners converted to paying customers after a guided trial.',
+    desc: 'Version zero shipped in two weeks. Two design partners converted to paying customers after a guided trial and value review.',
   },
   {
     title: 'Creator Tools',
-    desc: 'Low-code MVP validated core assumptions. The team raised a seed round within 90 days using product signals.',
+    desc: 'Low-code MVP validated core assumptions. The team raised a seed round within ninety days using product signals and cohort retention.',
   },
 ];
 
@@ -243,8 +243,8 @@ export default function MVPStudioPage() {
                   </ul>
                 </div>
                 <div className="flex items-center justify-center">
-                  <Link href="/contact" className="w-full inline-flex items-center justify-center gap-2 rounded-[12px] sm:rounded-[14px] bg-white text-slate-950 px-5 sm:px-8 py-3 sm:py-4 text-xs sm:text-sm font-bold hover:bg-white/90 transition-all shadow-xl">
-                    Book a scoping call
+                  <Link href="/get-started?intent=mvp-pricing" className="w-full inline-flex items-center justify-center gap-2 rounded-[12px] sm:rounded-[14px] bg-white text-slate-950 px-5 sm:px-8 py-3 sm:py-4 text-xs sm:text-sm font-bold hover:bg-white/90 transition-all shadow-xl">
+                    Book a 15-minute scoping call
                     <ArrowRight className="h-4 w-4" />
                   </Link>
                 </div>
@@ -293,10 +293,10 @@ export default function MVPStudioPage() {
           <SectionHeader title="FAQ" description="Common questions about our MVP program." />
           <div className="space-y-4 sm:space-y-6 mt-10 sm:mt-12">
             {[
-              { q: 'What do you need from us?', a: 'We need founder time for structured workshops, a single decision maker, and access to existing assets and tools.' },
+              { q: 'What do you need from us?', a: 'We need founder time for structured workshops, a single decision maker and access to existing assets and tools.' },
               { q: 'Will it scale?', a: 'Yes. We engineer MVPs to grow with clean modules, environment configuration, and CI from the first commit.' },
               { q: 'What happens after launch?', a: 'You can retain us for weekly sprints or we can hand over to your team with documentation and training.' },
-              { q: 'Do you support AI features?', a: 'Yes. We deliver RAG and search, chat experiences, assistants, and lightweight agents.' },
+              { q: 'Do you support AI features?', a: 'Yes. We deliver RAG and search, chat experiences, assistants, and lightweight agents. We choose the simplest path that proves value quickly.' },
             ].map((faq, i) => (
               <Reveal key={i} y={10} delayMs={i * 50}>
                 <div className="surface p-5 sm:p-6 border border-white/5">

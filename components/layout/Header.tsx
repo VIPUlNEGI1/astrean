@@ -11,7 +11,6 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
- 
   {
     label: 'AI Consulting',
     href: '/ai-transformation',
@@ -26,7 +25,7 @@ const navItems: NavItem[] = [
     href: '/anx-intelligence',
     dropdown: [
       { label: 'Solvoris', href: '/products/solvoris' },
-      { label: 'Orzo (ANX Intelligence)', href: '/anx-intelligence' },
+      { label: 'Orzora', href: '/anx-intelligence' },
     ],
   },
   {
@@ -43,7 +42,7 @@ const navItems: NavItem[] = [
     href: '/about-us',
     dropdown: [
       { label: 'Who We Are', href: '/about-us' },
-      { label: 'Company Story', href: '/company' },
+      { label: 'Company', href: '/company' },
     ],
   },
   { label: 'Industries', href: '/industries' },

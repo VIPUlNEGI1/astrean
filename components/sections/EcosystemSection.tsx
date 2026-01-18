@@ -1,6 +1,7 @@
 'use client';
 
-import { Package, Users, Infinity } from 'lucide-react';
+import { Package, Users, Infinity, CheckCircle } from 'lucide-react';
+import Link from 'next/link';
 import PartnerCard from '../ui/PartnerCard';
 
 const ecosystemFeatures = [
@@ -62,21 +63,31 @@ export default function EcosystemSection() {
               Ecosystem
             </p>
             <h2 className="mt-4 text-2xl xs:text-3xl md:text-5xl font-semibold tracking-tight text-white leading-tight">
-              We Orchestrate the Ecosystem
+              We Orchestrate the Ecosystem Not Just Use It
             </h2>
             <p className="mt-4 text-sm sm:text-base md:text-lg text-white/70 leading-relaxed mb-8 max-w-xl">
-              Our deep partnerships with leading AI providers, community and
-              research organizations, and open-source initiatives allow us to
-              build bespoke solutions that leverage the best of the AI landscape.
+              Astrenox as systems integrator: OpenAI / Anthropic / Llama / Gemini + LangGraph, CrewAI, n8n → resilient, observable, governable platforms.
             </p>
 
             <div className="space-y-5 sm:space-y-6 mb-8">
-              {ecosystemFeatures.map((feature, index) => {
-                const Icon = feature.icon;
+              {[
+                {
+                  title: 'Future-Proof Architecture',
+                  description: 'Building systems that evolve with the rapidly changing AI landscape.',
+                },
+                {
+                  title: 'Vendor-Agnostic Strategy',
+                  description: 'The right model for the right task, across any provider.',
+                },
+                {
+                  title: 'Enterprise-Grade Security & Governance',
+                  description: 'Resilient, observable, and governable AI platforms.',
+                },
+              ].map((feature, index) => {
                 return (
                   <div key={index} className="flex items-start gap-3.5 sm:gap-4">
                     <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-[12px] sm:rounded-[16px] border border-white/10 bg-white/5 flex items-center justify-center flex-shrink-0">
-                      <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-white/80" />
+                      <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-white/80" />
                     </div>
                     <div>
                       <h3 className="text-sm sm:text-base md:text-lg font-semibold tracking-tight mb-0.5 text-white">
@@ -91,9 +102,9 @@ export default function EcosystemSection() {
               })}
             </div>
 
-            <button className="w-full sm:w-auto inline-flex items-center justify-center rounded-[12px] sm:rounded-[14px] bg-white text-slate-950 px-4 sm:px-5 py-2.5 sm:py-3 text-xs sm:text-sm font-semibold shadow-lg shadow-black/30 transition hover:bg-white/90">
-              Explore our partnerships
-            </button>
+            <Link href="/intelligent-automations" className="btn-primary w-full sm:w-auto">
+              Explore Intelligent Automations
+            </Link>
           </div>
 
           <div className="mt-8 lg:mt-0">

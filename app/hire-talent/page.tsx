@@ -118,12 +118,12 @@ export default function HireTalentPage() {
       <section className="relative py-12">
         <div className="max-w-7xl mx-auto px-3.5 sm:px-6">
           <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-6">
-            <Link href="/contact" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-[12px] sm:rounded-[14px] bg-white text-slate-950 px-5 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-bold hover:bg-white/90 transition-all shadow-xl">
+            <Link href="/get-started?intent=talent" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-[12px] sm:rounded-[14px] bg-white text-slate-950 px-5 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-bold hover:bg-white/90 transition-all shadow-xl">
               Get a shortlist
               <ArrowRight className="h-4 w-4" />
             </Link>
-            <Link href="/contact" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-[12px] sm:rounded-[14px] border border-white/20 bg-white/5 px-5 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-bold hover:bg-white/10 transition-colors">
-              Talk to an expert
+            <Link href="/get-started?intent=talent-call" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-[12px] sm:rounded-[14px] border border-white/20 bg-white/5 px-5 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-bold hover:bg-white/10 transition-colors">
+              Talk to a solutions architect
             </Link>
           </div>
         </div>
@@ -371,12 +371,12 @@ export default function HireTalentPage() {
         <div className="relative z-10 max-w-4xl mx-auto px-3.5 sm:px-4 text-center">
           <h2 className="text-2xl xs:text-3xl md:text-6xl font-display mb-6 sm:mb-8 leading-tight">Ready to add horsepower to your roadmap?</h2>
           <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6">
-            <Link href="/contact" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-[12px] sm:rounded-[14px] bg-white text-slate-950 px-5 sm:px-10 py-3.5 sm:py-5 text-sm sm:text-base font-bold hover:bg-white/90 transition-all">
+            <Link href="/get-started?intent=talent" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-[12px] sm:rounded-[14px] bg-white text-slate-950 px-5 sm:px-10 py-3.5 sm:py-5 text-sm sm:text-base font-bold hover:bg-white/90 transition-all">
               Get a shortlist
               <ArrowRight className="h-4 w-4" />
             </Link>
-            <Link href="/contact" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-[12px] sm:rounded-[14px] border border-white/20 bg-white/5 px-5 sm:px-10 py-3.5 sm:py-5 text-sm sm:text-base font-bold hover:bg-white/10 transition-colors">
-              Talk to an expert
+            <Link href="/get-started?intent=talent-call" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-[12px] sm:rounded-[14px] border border-white/20 bg-white/5 px-5 sm:px-10 py-3.5 sm:py-5 text-sm sm:text-base font-bold hover:bg-white/10 transition-colors">
+              Talk to a solutions architect
             </Link>
           </div>
         </div>

@@ -9,7 +9,7 @@ const quickLinks = [
   { label: 'AI Transformation', href: '/ai-transformation' },
   { label: 'AI Engineering', href: '/ai-engineering' },
   { label: 'Intelligent Automations', href: '/intelligent-automations' },
-  { label: 'IT Consulting & Modernization', href: '/consulting-modernization' },
+  { label: 'Digital Services', href: '/consulting-modernization' },
   { label: 'Hire Talent', href: '/hire-talent' },
   { label: 'MVP Studio', href: '/mvp-studio' },
   { label: 'About Us', href: '/about-us' },

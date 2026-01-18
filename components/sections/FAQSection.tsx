@@ -186,9 +186,9 @@ export default function FAQSection({ faqs = DEFAULT_FAQS }: FAQSectionProps) {
             Still have questions? Email us at{' '}
             <a
               className="text-white/80 underline underline-offset-4 hover:text-white"
-              href="mailto:Prajwal@astrentech.com"
+              href="mailto:hello@astrenox.com"
             >
-              Prajwal@astrentech.com
+              hello@astrenox.com
             </a>
             .
           </p>

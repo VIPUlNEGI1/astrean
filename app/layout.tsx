@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 import AssistBot from "@/components/ui/AssistBot";
 import TermsModal from "@/components/ui/TermsModal";
 
-const inter = Inter({
+const poppins = Poppins({
   variable: "--font-sans",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
@@ -24,8 +24,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} antialiased font-sans animate-in fade-in duration-700`}
+        className={`${poppins.variable} antialiased font-sans animate-in fade-in duration-700`}
       >
+        
         <div className="relative overflow-x-hidden min-h-screen">
           {children}
         </div>

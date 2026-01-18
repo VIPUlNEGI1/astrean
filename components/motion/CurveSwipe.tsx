@@ -46,75 +46,70 @@ export default function CurveSwipe({
     return () => media.removeEventListener('change', handler);
   }, []);
 
-  useLayoutEffect(() => {
-    if (!wrapRef.current || !pinRef.current || !topPanelRef.current) return;
-    if (reduceMotion) return;
+ useLayoutEffect(() => {
+  if (!wrapRef.current || !pinRef.current || !topPanelRef.current) return;
+  if (reduceMotion) return;
 
-    gsap.registerPlugin(ScrollTrigger);
-    ScrollTrigger.config({ ignoreMobileResize: true });
+  gsap.registerPlugin(ScrollTrigger);
+  ScrollTrigger.config({ ignoreMobileResize: true });
 
-    const ctx = gsap.context(() => {
-      const wrap = wrapRef.current!;
-      const pin = pinRef.current!;
-      const topPanel = topPanelRef.current!;
-      const curvePath = curvePathRef.current;
+  const ctx = gsap.context(() => {
+    const wrap = wrapRef.current!;
+    const pin = pinRef.current!;
+    const topPanel = topPanelRef.current!;
+    const curvePath = curvePathRef.current;
 
-      // Ensure consistent starting state and GPU transforms
-      gsap.set(topPanel, { yPercent: 0, force3D: true });
+    gsap.set(topPanel, { yPercent: 0, force3D: true });
 
-      // Precompute curve shapes so we don't do expensive interpolation on every scroll tick.
-      const interpUp = interpolate(PATH_BOTTOM_FLAT, PATH_BULGE, {
-        maxSegmentLength: 18,
-      });
-      const interpOut = interpolate(PATH_BULGE, PATH_TOP_FLAT, {
-        maxSegmentLength: 18,
-      });
+    const interpUp = interpolate(PATH_BOTTOM_FLAT, PATH_BULGE, { maxSegmentLength: 18 });
+    const interpOut = interpolate(PATH_BULGE, PATH_TOP_FLAT, { maxSegmentLength: 18 });
 
-      const STEPS = 140;
-      const curveCache: string[] = Array.from({ length: STEPS + 1 }, (_, i) => {
-        const t = i / STEPS; // 0..1
-        if (t <= 0.5) return interpUp(t * 2);
-        return interpOut((t - 0.5) * 2);
-      });
+    const STEPS = 250; // smoother curve
+    const curveCache: string[] = Array.from({ length: STEPS + 1 }, (_, i) => {
+      const t = i / STEPS;
+      if (t <= 0.5) return interpUp(t * 2);
+      return interpOut((t - 0.5) * 2);
+    });
 
-      const setY = gsap.quickSetter(topPanel, 'yPercent');
-      const setD =
-        curvePath && (gsap.quickSetter(curvePath, 'attr:d') as any)
-          ? (gsap.quickSetter(curvePath, 'attr:d') as (v: string) => void)
-          : (v: string) => curvePath?.setAttribute('d', v);
+    const setY = gsap.quickSetter(topPanel, 'yPercent');
+    const setD =
+      curvePath && (gsap.quickSetter(curvePath, 'attr:d') as any)
+        ? (gsap.quickSetter(curvePath, 'attr:d') as (v: string) => void)
+        : (v: string) => curvePath?.setAttribute('d', v);
 
-      setD(curveCache[0]);
+    setD(curveCache[0]);
 
-      const total = Math.max(1, swipeDistanceVh + holdDistanceVh);
-      const swipePortion = Math.min(1, Math.max(0.05, swipeDistanceVh / total));
+    const total = Math.max(1, swipeDistanceVh + holdDistanceVh);
+    const swipePortion = Math.min(1, Math.max(0.05, swipeDistanceVh / total));
 
-      ScrollTrigger.create({
-        trigger: wrap,
-        start: 'top top',
-        end: () => `+=${(total / 100) * window.innerHeight}`,
-        pin,
-        scrub: 0.85,
-        anticipatePin: 1,
-        invalidateOnRefresh: true,
-        onUpdate: (self) => {
-          const raw = self.progress / swipePortion;
-          const swipeT = raw <= 0 ? 0 : raw >= 1 ? 1 : raw;
+    ScrollTrigger.create({
+      trigger: wrap,
+      start: 'top top',
+      end: () => `+=${(total / 100) * window.innerHeight}`,
+      pin,
+      scrub: 0.5, // faster, smoother
+      anticipatePin: 0.5,
+      invalidateOnRefresh: true,
+      fastScrollEnd: true,
+      onUpdate: (self) => {
+        const raw = self.progress / swipePortion;
+        const swipeT = gsap.utils.clamp(0, 1, raw);
 
-          // Reveal: slide the top panel upward.
-          setY(-100 * swipeT);
+        // Slide top panel
+        setY(-100 * swipeT);
 
-          // Ease-in then ease-out to mimic the GSAP reference feel.
-          const tIn = swipeT * swipeT;
-          const tOut = 1 - (1 - swipeT) * (1 - swipeT);
-          const curveT = swipeT <= 0.5 ? tIn : tOut;
-          const idx = Math.max(0, Math.min(STEPS, Math.round(curveT * STEPS)));
-          setD(curveCache[idx]);
-        },
-      });
-    }, wrapRef);
+        // Smooth easing for curve
+        const easeFunc = gsap.parseEase('power1.inOut');
+        const curveT = easeFunc(swipeT);
 
-    return () => ctx.revert();
-  }, [swipeDistanceVh, holdDistanceVh, reduceMotion]);
+        const idx = Math.round(curveT * STEPS);
+        setD(curveCache[idx]);
+      },
+    });
+  }, wrapRef);
+
+  return () => ctx.revert();
+}, [swipeDistanceVh, holdDistanceVh, reduceMotion]);
 
   // Reduced motion: no pinning/overlay — just render normally.
   if (reduceMotion) {
@@ -133,7 +128,8 @@ export default function CurveSwipe({
 
         <div
           ref={topPanelRef}
-          className="absolute inset-0 z-10 will-change-transform"
+          className="absolute inset-0 z-10 will-change-transform backface-hidden"
+          style={{ WebkitPerspective: 1000, perspective: 1000 }}
         >
           {top}
 

@@ -105,7 +105,7 @@ export default function IntelligentAutomationsPage() {
             ))}
           </div>
           <div className="mt-12 sm:mt-16 text-center">
-            <Link href="/contact" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-[12px] sm:rounded-[14px] bg-white text-slate-950 px-5 sm:px-10 py-3.5 sm:py-4 text-sm sm:text-base font-bold hover:bg-white/90 transition-colors shadow-2xl">
+            <Link href="/get-started?intent=automations" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-[12px] sm:rounded-[14px] bg-white text-slate-950 px-5 sm:px-10 py-3.5 sm:py-4 text-sm sm:text-base font-bold hover:bg-white/90 transition-colors shadow-2xl">
               Scope my first use case
               <ArrowRight className="h-4 w-4" />
             </Link>
@@ -133,7 +133,7 @@ export default function IntelligentAutomationsPage() {
             ))}
           </div>
           <div className="mt-10 sm:mt-12 text-center">
-            <Link href="/contact" className="text-purple-400 hover:text-purple-300 font-semibold flex items-center justify-center gap-2 text-sm sm:text-base">
+            <Link href="/get-started?intent=connectors" className="text-purple-400 hover:text-purple-300 font-semibold flex items-center justify-center gap-2 text-sm sm:text-base">
               See our data connectors
               <ArrowRight className="h-4 w-4" />
             </Link>
@@ -195,7 +195,7 @@ export default function IntelligentAutomationsPage() {
             ))}
           </div>
           <div className="mt-12 sm:mt-16 text-center px-3.5">
-            <Link href="/contact" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-[12px] sm:rounded-[14px] bg-white text-slate-950 px-5 sm:px-10 py-3.5 sm:py-4 font-bold hover:bg-white/90 transition-all shadow-xl text-sm sm:text-base">
+            <Link href="/get-started?intent=discovery" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-[12px] sm:rounded-[14px] bg-white text-slate-950 px-5 sm:px-10 py-3.5 sm:py-4 font-bold hover:bg-white/90 transition-all shadow-xl text-sm sm:text-base">
               Start Discovery
               <ArrowRight className="h-4 w-4" />
             </Link>
@@ -207,7 +207,7 @@ export default function IntelligentAutomationsPage() {
         <div className="relative z-10 max-w-4xl mx-auto px-3.5 sm:px-4 text-center">
           <h2 className="text-2xl xs:text-3xl md:text-6xl font-display mb-6 sm:mb-8 leading-tight">Ready to automate intelligently?</h2>
           <p className="text-sm sm:text-base md:text-lg text-white/60 mb-8 sm:mb-12 leading-relaxed">Let’s scope your first high-impact use case.</p>
-          <Link href="/contact" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-[12px] sm:rounded-[14px] bg-white text-slate-950 px-5 sm:px-10 py-3.5 sm:py-5 text-sm sm:text-base font-bold hover:bg-white/90 transition-all shadow-2xl">
+          <Link href="/get-started" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-[12px] sm:rounded-[14px] bg-white text-slate-950 px-5 sm:px-10 py-3.5 sm:py-5 text-sm sm:text-base font-bold hover:bg-white/90 transition-all shadow-2xl">
             Get Started
             <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
           </Link>

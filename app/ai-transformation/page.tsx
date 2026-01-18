@@ -57,7 +57,7 @@ export default function AITransformationPage() {
                   animateTitleLines
                 />
                 <div className="mt-6 sm:mt-8">
-                  <Link href="/contact" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-[12px] sm:rounded-[14px] bg-white text-slate-950 px-5 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-bold hover:bg-white/90 transition-colors shadow-xl">
+                  <Link href="/get-started?intent=assessment" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-[12px] sm:rounded-[14px] bg-white text-slate-950 px-5 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-bold hover:bg-white/90 transition-colors shadow-xl">
                     Request an Assessment
                     <ArrowRight className="h-4 w-4" />
                   </Link>
@@ -148,7 +148,7 @@ export default function AITransformationPage() {
             ))}
           </div>
           <div className="mt-12 sm:mt-16 text-center">
-            <Link href="/contact" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-[12px] sm:rounded-[14px] bg-white text-slate-950 px-8 sm:px-10 py-3.5 sm:py-5 text-sm sm:text-base font-bold hover:bg-white/90 transition-all shadow-2xl">
+            <Link href="/get-started?intent=transformation" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-[12px] sm:rounded-[14px] bg-white text-slate-950 px-8 sm:px-10 py-3.5 sm:py-5 text-sm sm:text-base font-bold hover:bg-white/90 transition-all shadow-2xl">
               Start your transformation
               <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
             </Link>
@@ -169,7 +169,7 @@ export default function AITransformationPage() {
         />
         <div className="relative z-10 max-w-4xl mx-auto px-3.5 sm:px-4 text-center">
           <h2 className="text-2xl xs:text-3xl md:text-6xl font-display mb-6 sm:mb-8 leading-tight sm:leading-normal px-2">Stay on the right side of history.</h2>
-          <Link href="/contact" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-[12px] sm:rounded-[14px] bg-white text-slate-950 px-8 sm:px-10 py-3.5 sm:py-5 text-sm sm:text-base font-bold hover:bg-white/90 transition-all">
+          <Link href="/get-started" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-[12px] sm:rounded-[14px] bg-white text-slate-950 px-8 sm:px-10 py-3.5 sm:py-5 text-sm sm:text-base font-bold hover:bg-white/90 transition-all">
             Get Started
             <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
           </Link>

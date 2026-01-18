@@ -207,11 +207,11 @@ export default function DigitalITConsultingPage() {
         <div className="relative z-10 max-w-4xl mx-auto px-3.5 sm:px-4 text-center">
           <h2 className="text-2xl xs:text-3xl md:text-6xl font-display mb-6 sm:mb-8 leading-tight">Let’s Build Your Future</h2>
           <p className="text-sm sm:text-base md:text-lg text-white/60 mb-8 sm:mb-12 italic leading-relaxed">Start with a focused scoping session. We’ll align the plan and ship the work.</p>
-          <Link href="/contact" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-[12px] sm:rounded-[14px] bg-white text-slate-950 px-5 sm:px-8 py-3.5 sm:py-5 text-sm sm:text-base font-bold hover:bg-white/90 transition-all shadow-2xl">
+          <Link href="/get-started?intent=consulting" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-[12px] sm:rounded-[14px] bg-white text-slate-950 px-5 sm:px-8 py-3.5 sm:py-5 text-sm sm:text-base font-bold hover:bg-white/90 transition-all shadow-2xl">
             Request Scoping Session
             <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
           </Link>
- Broadway        </div>
+        </div>
       </section>
 
       <Footer />

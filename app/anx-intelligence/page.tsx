@@ -113,7 +113,7 @@ export default function ANXIntelligencePage() {
               See Intelligent Automations
               <ArrowRight className="h-4 w-4" />
             </Link>
-            <Link href="/contact" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-[12px] sm:rounded-[14px] bg-white text-slate-950 px-5 sm:px-8 py-3.5 sm:py-4 text-sm sm:text-base font-bold hover:bg-white/90 transition-all shadow-2xl">
+            <Link href="/get-started?intent=anx-intelligence" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-[12px] sm:rounded-[14px] bg-white text-slate-950 px-5 sm:px-8 py-3.5 sm:py-4 text-sm sm:text-base font-bold hover:bg-white/90 transition-all shadow-2xl">
               Talk to our AI Experts
               <ArrowRight className="h-4 w-4" />
             </Link>

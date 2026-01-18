@@ -15,6 +15,7 @@ import {
   FAQSection,
   MethodologySection,
   FoundationalMethodologiesDashboard,
+  EcosystemSection,
 } from '@/components/sections';
 import Reveal from '@/components/motion/Reveal';
 import Link from 'next/link';
@@ -44,6 +45,7 @@ export default function Home() {
         stats={heroData.stats}
       />
 
+      {/* Social Proof Intro */}
       <Reveal>
         <div className="py-12">
           <SocialProofSection />
@@ -53,8 +55,8 @@ export default function Home() {
       {/* Foundational Methodologies */}
       <MethodologySection />
 
-      {/* Foundational Methodologies (dashboard view) */}
-      <FoundationalMethodologiesDashboard />
+      {/* Technology Ecosystem */}
+      <EcosystemSection />
 
       {/* Choice / Positioning */}
       <section

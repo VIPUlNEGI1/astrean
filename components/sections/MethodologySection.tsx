@@ -3,20 +3,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import gsap from 'gsap';
-import { 
-  ArrowRight, 
-  CheckCircle2, 
-  Target, 
-  Zap, 
-  LineChart, 
-  Search, 
-  Users, 
-  RefreshCw, 
-  Layers, 
-  Cpu,
-  Compass,
-  Activity
-} from 'lucide-react';
+import { CheckCircle2, Zap, Compass, Activity, Layers, Target, Users, Cpu, LineChart, RefreshCw, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import Reveal from '@/components/motion/Reveal';
 
@@ -29,41 +16,41 @@ const strategicApproach = {
     },
     {
       title: 'Readiness',
-      description: 'Assess people, processes, and tech to surface gaps.',
+      description: 'Assess people, processes, and tech, surface gaps and a priority plan.',
       icon: Activity,
     },
     {
       title: 'Foundation',
-      description: 'Map target architecture and data models with standards.',
+      description: 'Map target architecture, data models, and integrations with clear standards.',
       icon: Layers,
     },
   ],
   align: [
     {
       title: 'Focus',
-      description: 'Build a value-scored use-case portfolio. Balance wins.',
+      description: 'Build a value-scored use-case portfolio, balance quick wins with compounding bets tied to metrics.',
       icon: Target,
     },
     {
       title: 'Coordination',
-      description: 'Stand up governance, roles, and execution cadence.',
+      description: 'Stand up governance, roles, decision rights, and an execution cadence across teams.',
       icon: Users,
     },
   ],
   execute: [
     {
       title: 'Engine',
-      description: 'Operational playbooks for pilot-to-scale delivery.',
+      description: 'Operational playbooks for pilot-to-scale delivery, change management, and releases.',
       icon: Cpu,
     },
     {
       title: 'Insight',
-      description: 'Live dashboards and AI-powered recommendations.',
+      description: 'Live dashboards and AI-powered recommendations to drive decisions at every level.',
       icon: LineChart,
     },
     {
       title: 'Refinement',
-      description: 'Tight feedback loops and retros to iterate the roadmap.',
+      description: 'Tight feedback loops and retros to iterate the roadmap and improve continuously.',
       icon: RefreshCw,
     },
   ],
@@ -188,6 +175,8 @@ export default function MethodologySection() {
     { id: 'execute', label: 'Execute', color: 'text-emerald-400', bg: 'bg-emerald-500/10', border: 'border-emerald-500/20' },
   ] as const;
 
+  const activeTabData = tabs.find(t => t.id === activeTab)!;
+
   useEffect(() => {
     if (!headlineRef.current) return
     const el = headlineRef.current
@@ -222,7 +211,7 @@ export default function MethodologySection() {
                   Focus the force.
                 </h2>
                 <p className="text-sm sm:text-base md:text-lg text-white/60 leading-relaxed max-w-xl mx-auto lg:mx-0">
-                  We don't just add AI; we solve for flow. By analyzing your whole system—from latency to failure modes—we identify the constraints holding you back.
+                  We don't just add AI, we solve for flow. By analyzing your whole system—from latency to failure modes—we identify the constraints holding you back. Maximizing leverage at the constraint is how we unlock step-change ROI.
                 </p>
               </div>
             </Reveal>
@@ -240,11 +229,16 @@ export default function MethodologySection() {
                   <Target className="h-3 w-3" />
                   Methodology Part B
                 </div>
-                <h3 className="text-xl sm:text-2xl md:text-3xl font-display">Our Strategic Approach</h3>
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-display">Think → Align → Execute</h3>
               </div>
             </Reveal>
 
             <div className="surface p-1.5 sm:p-2 rounded-[20px] sm:rounded-[24px] border border-white/10 bg-white/[0.02]">
+              <div className="mb-4 px-4 pt-4">
+                <p className="text-sm text-white/60 leading-relaxed">
+                  A practical, eight-anchor framework that turns strategy into shipped outcomes—sequenced for maximum leverage and measurable ROI.
+                </p>
+              </div>
               <div className="flex flex-col xs:flex-row gap-1.5 sm:gap-2 p-1">
                 {tabs.map((tab) => (
                   <button
@@ -273,8 +267,8 @@ export default function MethodologySection() {
                   >
                     {strategicApproach[activeTab].map((item, i) => (
                       <div key={item.title} className="flex gap-4 sm:gap-6 group">
-                        <div className={`h-10 w-10 sm:h-12 sm:w-12 rounded-[12px] sm:rounded-[16px] flex items-center justify-center shrink-0 transition-transform group-hover:scale-110 duration-300 ${tabs.find(t => t.id === activeTab)?.bg} border ${tabs.find(t => t.id === activeTab)?.border}`}>
-                          <item.icon className={`h-5 w-5 sm:h-6 sm:w-6 ${tabs.find(t => t.id === activeTab)?.color}`} />
+                        <div className={`h-10 w-10 sm:h-12 sm:w-12 rounded-[12px] sm:rounded-[16px] flex items-center justify-center shrink-0 transition-transform group-hover:scale-110 duration-300 ${activeTabData.bg} border ${activeTabData.border}`}>
+                          <item.icon className={`h-5 w-5 sm:h-6 sm:w-6 ${activeTabData.color}`} />
                         </div>
                         <div className="space-y-0.5 sm:space-y-1">
                           <h4 className="text-sm sm:text-base md:text-lg font-bold text-white group-hover:text-purple-400 transition-colors duration-300">{item.title}</h4>

@@ -99,7 +99,7 @@ export default function GetStartedPage() {
               <Reveal y={20} delayMs={200}>
                 <div className="p-6 rounded-2xl bg-gradient-to-br from-cyan-500/5 to-purple-500/5 border border-white/5">
                   <p className="text-sm text-white/50 italic leading-relaxed text-center">
-                    "Astrenox isn't just a vendor; they're an extension of our engineering culture, bringing AI expertise that would take years to build in-house."
+                    "Astrenox isn't just a vendor, they're an extension of our engineering culture, bringing AI expertise that would take years to build in-house."
                   </p>
                 </div>
               </Reveal>
@@ -193,7 +193,7 @@ export default function GetStartedPage() {
                               defaultValue=""
                             >
                               <option value="" disabled>Select an option</option>
-                              {['Search', 'X', 'LinkedIn', 'YouTube', 'Referral', 'Other'].map((opt) => (
+                              {['Search', 'AI App', 'X', 'LinkedIn', 'YouTube', 'Referral', 'Newsletter', 'Podcast', 'Other'].map((opt) => (
                                 <option key={opt} value={opt}>{opt}</option>
                               ))}
                             </select>
